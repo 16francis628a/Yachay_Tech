@@ -1,0 +1,62 @@
+---
+title: "Primer reporte"
+author: "Francisco Areyuna"
+date: "25-09-2025"
+format: "html"
+---
+
+# Titulo 1
+
+## subtitulo 2
+
+```{python}
+#!pip install vega_datasets
+#!pip install matplotlib
+import altair as alt
+
+alt.data_transformers.disable_max_rows()
+
+from vega_datasets import data
+
+cars = data.cars()
+
+print(cars.head())
+
+
+
+```
+
+```{python}
+cars.info()
+
+```
+
+```{python}
+mi_grafico = alt.Chart(cars).mark_point().encode(
+    x='Miles_per_Gallon',
+    y='Horsepower',
+    tooltip=['Name', 'Origin', 'Miles_per_Gallon', 'Horsepower']
+    ).interactive()
+
+display(mi_grafico)
+
+print("Gráfico generado")
+
+```
+
+```{python}
+
+alt.Chart(cars).mark_point(filled=True).encode(
+    x='Miles_per_Gallon',
+    y='Horsepower',
+    color='Origin',
+    tooltip=['Name', 'Origin', 'Miles_per_Gallon', 'Horsepower']
+    ).interactive()
+
+```
+
+### subtitulo 3
+
+- lista
+    - elemento 1
+    - elemnto 2
